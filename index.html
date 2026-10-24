@@ -554,9 +554,12 @@
     try { localStorage.setItem('sidr-lang', lang); } catch(e){}
   }
   /* Paint the page on first load — every string lives in data-en / data-ar,
-     so nothing is visible until setLang() runs. */
+     so nothing is visible until setLang() runs. ?lang=ar opens the Arabic view directly. */
   var savedLang = 'en';
-  try { savedLang = localStorage.getItem('sidr-lang') || 'en'; } catch(e){}
+  try {
+    var qLang = new URLSearchParams(location.search).get('lang');
+    savedLang = (qLang === 'ar' || qLang === 'en') ? qLang : (localStorage.getItem('sidr-lang') || 'en');
+  } catch(e){}
   setLang(savedLang === 'ar' ? 'ar' : 'en');
 </script>
 </body>
