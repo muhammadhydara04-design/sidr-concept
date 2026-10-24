@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sidr — سِدر | Bilingual EN/AR Landing Page Concept (RTL)</title>
+<meta name="description" content="Concept piece, not client work: one English landing page rebuilt for Arabic — native copy, full right-to-left layout, Arabic numerals. Toggle EN ⇄ ع to compare." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sidr — concept demo" />
+<meta property="og:title" content="Sidr — bilingual EN/AR landing page concept (with RTL)" />
+<meta property="og:description" content="Toggle EN ⇄ ع and the whole page flips: native Arabic copy, RTL layout, Arabic-Indic numerals. A concept demo for a bilingual page delivery service." />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sidr — bilingual EN/AR landing page concept (with RTL)" />
+<meta name="theme-color" content="#141210" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23141210'/%3E%3Cpath d='M20 7c5 6 9 11 9 16a9 9 0 1 1-18 0c0-5 4-10 9-16Z' fill='none' stroke='%23c8a97a' stroke-width='1.6'/%3E%3Cpath d='M20 16v14M20 23l4-3M20 27l4 3' stroke='%23c8a97a' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E" />
+<!--
+  SPEC / CONCEPT PIECE — not a real client.
+  Built as portfolio proof for a bilingual (EN/AR + RTL) landing page service.
+  Present it honestly as a concept, never as client work.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Noto+Kufi+Arabic:wght@300..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141210;
+    --ink-soft:#4a443b;
+    --sand:#f8f3ea;
+    --sand-deep:#efe4d2;
+    --gold:#a4814d;
+    --gold-soft:#c8a97a;
+    --sage:#6c7a60;
+    --line:#e3d9c7;
+    --radius:16px;
+    --display:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body.ar{ font-family:"Noto Kufi Arabic",var(--sans); line-height:1.9; }
+  h1,h2,h3,.display{ font-family:var(--display); font-weight:400; letter-spacing:-.02em; margin:0; }
+  body.ar h1, body.ar h2, body.ar h3, body.ar .display{
+    font-family:"Noto Kufi Arabic",var(--sans); letter-spacing:0; font-weight:500; line-height:1.5;
+  }
+  a{color:inherit}
+  img,svg{display:block;max-width:100%}
+
+  .wrap{ width:min(1180px,100% - 48px); margin-inline:auto; }
+
+  /* ---------- header ---------- */
+  .announce{
+    background:var(--ink); color:#f3ece0; font-size:12.5px; letter-spacing:.14em;
+    text-transform:uppercase; text-align:center; padding:9px 16px;
+  }
+  body.ar .announce{ letter-spacing:0; text-transform:none; font-size:13px; }
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--sand) 88%, transparent);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{ display:flex; align-items:center; gap:28px; height:74px; }
+  .logo{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .logo-mark{ width:30px; height:30px; flex:none; }
+  .logo-word{ font-family:var(--display); font-size:26px; letter-spacing:.01em; }
+  body.ar .logo-word{ font-family:"Noto Kufi Arabic",serif; font-size:22px; font-weight:600; }
+  .menu{ display:flex; gap:26px; margin-inline-start:auto; }
+  .menu a{ text-decoration:none; font-size:14.5px; color:var(--ink-soft); position:relative; padding-block:4px; }
+  .menu a::after{
+    content:""; position:absolute; inset-inline-start:0; bottom:0; height:1px; width:0;
+    background:var(--gold); transition:width .3s ease;
+  }
+  .menu a:hover::after{ width:100% }
+  .nav-actions{ display:flex; align-items:center; gap:14px; }
+
+  .lang{
+    display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:#fff;
+  }
+  .lang button{
+    border:0; background:transparent; padding:7px 14px; font:inherit; font-size:13px;
+    cursor:pointer; color:var(--ink-soft); transition:.2s;
+  }
+  .lang button.on{ background:var(--ink); color:#f6efe3; }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    padding:14px 26px; border-radius:999px; border:1px solid transparent;
+    font:inherit; font-size:14.5px; text-decoration:none; cursor:pointer;
+    transition:transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .btn:hover{ transform:translateY(-1px) }
+  .btn-dark{ background:var(--ink); color:#f8f3ea }
+  .btn-dark:hover{ background:#2a251f }
+  .btn-gold{ background:var(--gold); color:#fff }
+  .btn-gold:hover{ background:#8f6f40 }
+  .btn-ghost{ border-color:var(--line); background:#fff; color:var(--ink) }
+  .btn-ghost:hover{ border-color:var(--ink) }
+  .cart{
+    display:flex; align-items:center; gap:7px; font-size:13.5px; text-decoration:none;
+    color:var(--ink-soft);
+  }
+  .cart b{ background:var(--gold); color:#fff; border-radius:999px; padding:1px 7px; font-size:11px; }
+
+  /* ---------- hero ---------- */
+  .hero{ padding-block:76px 88px; position:relative; }
+  .hero-grid{ display:grid; grid-template-columns:1.03fr .97fr; gap:64px; align-items:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:9px; font-size:11.5px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:22px;
+  }
+  body.ar .eyebrow{ letter-spacing:0; text-transform:none; font-size:12.5px }
+  .eyebrow::before{ content:""; width:26px; height:1px; background:currentColor; display:block }
+  h1{ font-size:clamp(2.5rem,5.4vw,4.4rem); line-height:1.02; }
+  body.ar h1{ font-size:clamp(2.1rem,4.6vw,3.5rem); font-weight:600 }
+  .hero p.lead{ font-size:17.5px; color:var(--ink-soft); max-width:45ch; margin:26px 0 34px; }
+  .hero-cta{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .trust{
+    display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:36px; padding-top:26px;
+    border-top:1px solid var(--line); font-size:12.5px; color:var(--ink-soft);
+  }
+  .trust span{ display:flex; align-items:center; gap:7px }
+  .tick{ width:15px;height:15px;flex:none;color:var(--sage) }
+
+  .hero-art{
+    position:relative; aspect-ratio:4/4.6; border-radius:calc(var(--radius) + 6px);
+    background:
+      radial-gradient(120% 90% at 78% 12%, #fdfaf4 0%, #f2e7d5 42%, #e4d3b8 78%, #d9c4a4 100%);
+    overflow:hidden; box-shadow:0 40px 70px -40px rgba(40,30,15,.45);
+  }
+  .hero-art::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(90,70,40,.16) 1px, transparent 1px);
+    background-size:4px 4px; opacity:.5; mix-blend-mode:multiply; pointer-events:none;
+  }
+  .hero-art .caption{
+    position:absolute; inset-inline:22px; bottom:20px; display:flex; justify-content:space-between;
+    font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#6b5a41; z-index:2;
+  }
+  body.ar .hero-art .caption{ letter-spacing:0; text-transform:none; font-size:12px }
+  .bottle-stage{ position:absolute; inset:0; display:grid; place-items:center; }
+  .bottle-stage svg{ height:64%; width:auto; filter:drop-shadow(0 26px 30px rgba(70,50,25,.28)); }
+
+  /* ---------- marquee strip ---------- */
+  .strip{
+    border-block:1px solid var(--line); background:#fdf9f1; padding-block:16px; overflow:hidden;
+  }
+  .strip-inner{ display:flex; gap:64px; white-space:nowrap; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#7c6c53; }
+  body.ar .strip-inner{ letter-spacing:0; text-transform:none; font-size:13px }
+
+  /* ---------- products ---------- */
+  section{ padding-block:84px }
+  .sec-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:38px; flex-wrap:wrap }
+  .sec-head h2{ font-size:clamp(1.85rem,3.4vw,2.7rem) }
+  .sec-head p{ margin:10px 0 0; color:var(--ink-soft); font-size:15px; max-width:52ch }
+  .link-more{ font-size:13.5px; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px; color:var(--ink-soft); white-space:nowrap }
+
+  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px }
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+    transition:transform .28s ease, box-shadow .28s ease; display:flex; flex-direction:column;
+  }
+  .card:hover{ transform:translateY(-4px); box-shadow:0 26px 40px -32px rgba(60,45,25,.5) }
+  .card-visual{ aspect-ratio:1/.92; display:grid; place-items:center; position:relative }
+  .card-visual svg{ height:58%; filter:drop-shadow(0 14px 18px rgba(70,50,25,.22)) }
+  .v1{ background:linear-gradient(155deg,#f7eddc,#e8d6b8) }
+  .v2{ background:linear-gradient(155deg,#eef0e6,#d8dcc6) }
+  .v3{ background:linear-gradient(155deg,#f6e6dd,#ecd3c4) }
+  .tag{
+    position:absolute; inset-block-start:14px; inset-inline-start:14px; background:#fff; border-radius:999px;
+    font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; padding:5px 11px; color:#6b5a41;
+  }
+  body.ar .tag{ letter-spacing:0; text-transform:none; font-size:11.5px }
+  .card-body{ padding:20px 22px 22px; display:flex; flex-direction:column; gap:4px; flex:1 }
+  .card-body h3{ font-size:20px; font-family:var(--display); letter-spacing:0 }
+  body.ar .card-body h3{ font-family:"Noto Kufi Arabic",sans-serif; font-size:17px; font-weight:600 }
+  .card-body .size{ font-size:12.5px; color:#8a7c66 }
+  .card-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:16px }
+  .price{ font-size:15px; letter-spacing:.02em }
+  .add{
+    border:1px solid var(--ink); background:transparent; border-radius:999px; padding:8px 16px;
+    font:inherit; font-size:12.5px; cursor:pointer; transition:.2s;
+  }
+  .add:hover{ background:var(--ink); color:#f8f3ea }
+
+  /* ---------- why ---------- */
+  .why{ background:#fdf9f1; border-block:1px solid var(--line) }
+  .why-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:46px }
+  .why-item .num{ font-family:var(--display); font-size:13px; letter-spacing:.22em; color:var(--gold) }
+  body.ar .why-item .num{ letter-spacing:0; font-size:12px }
+  .why-item h3{ font-size:21px; margin:14px 0 10px }
+  body.ar .why-item h3{ font-size:18px; font-weight:600 }
+  .why-item p{ margin:0; color:var(--ink-soft); font-size:14.8px; max-width:34ch }
+
+  /* ---------- quote ---------- */
+  .quote-sec{ padding-block:96px; background:var(--sand-deep) }
+  .quote-wrap{ max-width:840px; margin-inline:auto; text-align:center }
+  .quote-mark{ font-family:var(--display); font-size:76px; line-height:.6; color:var(--gold-soft); }
+  blockquote{
+    font-family:var(--display); font-size:clamp(1.4rem,2.6vw,2rem); line-height:1.35;
+    font-style:italic; margin:22px 0 26px;
+  }
+  body.ar blockquote{ font-family:"Noto Kufi Arabic",sans-serif; font-style:normal; font-size:clamp(1.2rem,2.2vw,1.6rem); line-height:1.9; font-weight:400 }
+  .who{ display:flex; align-items:center; justify-content:center; gap:12px; font-size:13px; color:#6b5a41 }
+  .avatar{
+    width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,#c8a97a,#8f6f40);
+    display:grid; place-items:center; color:#fff; font-family:var(--display); font-size:15px;
+  }
+
+  /* ---------- cta band ---------- */
+  .band{
+    background:var(--ink); color:#f4ecdf; border-radius:calc(var(--radius) + 8px);
+    padding:64px 56px; display:grid; grid-template-columns:1.2fr .8fr; gap:44px; align-items:center;
+    position:relative; overflow:hidden;
+  }
+  .band::before{
+    content:""; position:absolute; width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle,rgba(200,169,122,.22),transparent 65%);
+    inset-inline-end:-120px; inset-block-start:-160px;
+  }
+  .band h2{ font-size:clamp(1.7rem,3vw,2.5rem); position:relative }
+  body.ar .band h2{ font-weight:600; font-size:clamp(1.5rem,2.6vw,2rem) }
+  .band p{ color:#bfb3a0; font-size:14.5px; margin:14px 0 0; max-width:44ch; position:relative }
+  .band-form{ display:flex; gap:10px; position:relative; flex-wrap:wrap }
+  .band-form input{
+    flex:1; min-width:190px; padding:14px 18px; border-radius:999px; border:1px solid #3a342c;
+    background:#211d18; color:#f4ecdf; font:inherit; font-size:14px; outline:none;
+  }
+  .band-form input:focus{ border-color:var(--gold-soft) }
+  .band small{ display:block; color:#8d8170; font-size:11.5px; margin-top:12px; position:relative }
+
+  /* ---------- footer ---------- */
+  footer{ padding-block:56px 40px; border-top:1px solid var(--line); margin-top:84px }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:34px; font-size:13.5px; color:var(--ink-soft) }
+  .foot-grid h4{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#8a7c66; margin:0 0 14px; font-weight:500 }
+  body.ar .foot-grid h4{ letter-spacing:0; text-transform:none; font-size:12px }
+  .foot-grid a{ display:block; text-decoration:none; margin-bottom:9px; color:var(--ink-soft) }
+  .foot-grid a:hover{ color:var(--ink) }
+  .foot-bottom{
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:44px;
+    padding-top:22px; border-top:1px solid var(--line); font-size:11.5px; color:#8a7c66;
+  }
+  .demo-note{
+    background:#fff6d8; border:1px dashed #d8bd6a; color:#6b5510; font-size:12px;
+    padding:9px 14px; border-radius:8px; margin-block:10px; text-align:center;
+  }
+
+  @media (max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; gap:44px }
+    .hero-art{ aspect-ratio:4/3.4; order:-1 }
+    .grid-3,.why-grid{ grid-template-columns:1fr }
+    .band{ grid-template-columns:1fr; padding:44px 28px }
+    .foot-grid{ grid-template-columns:1fr 1fr }
+    .menu{ display:none }
+    section{ padding-block:64px }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-note" id="demoNote">Concept demo — bilingual layout + RTL toggle. Not a real brand.</div>
+
+<div class="announce" data-en="Free GCC delivery over AED 250 — harvested, never imported" data-ar="توصيل مجاني داخل الخليج للطلبات فوق ٢٥٠ درهمًا — محصول محلي، لا مستورد"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M20 4c5 6 9 11 9 16a9 9 0 1 1-18 0c0-5 4-10 9-16Z" stroke="#a4814d" stroke-width="1.4"/>
+        <path d="M20 13v14M20 20l4-3M20 24l4 3" stroke="#a4814d" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-word" data-en="Sidr" data-ar="سِدر"></span>
+    </a>
+    <nav class="menu">
+      <a href="#shop" data-en="Shop" data-ar="المتجر"></a>
+      <a href="#why" data-en="Rituals" data-ar="الطقوس"></a>
+      <a href="#why" data-en="Ingredients" data-ar="المكوّنات"></a>
+      <a href="#journal" data-en="Journal" data-ar="المجلة"></a>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang" role="group" aria-label="Language">
+        <button id="btnEn" class="on" onclick="setLang('en')">EN</button>
+        <button id="btnAr" onclick="setLang('ar')">ع</button>
+      </div>
+      <a class="cart" href="#"><span data-en="Cart" data-ar="السلة"></span><b>2</b></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" data-en="New — The Sidr Ritual Set" data-ar="جديد — طقم سِدر اليومي"></span>
+      <h1 data-en="Ancient sidr.<br>Modern skin." data-ar="سِدرٌ أصيل.<br>بشرةٌ عصرية."></h1>
+      <p class="lead"
+         data-en="Cold-pressed sidr oil, camel milk proteins and frankincense — three ingredients the desert has trusted for centuries, now formulated for daily use."
+         data-ar="زيت السِّدر المعصور على البارد، وبروتينات حليب الإبل، واللبان — ثلاثة مكوّنات وثقت بها الصحراء قرونًا، والآن بتركيبة تناسب الاستخدام اليومي."></p>
+      <div class="hero-cta">
+        <a href="#shop" class="btn btn-dark" data-en="Shop the ritual" data-ar="تسوّق الطقس"></a>
+        <a href="#why" class="btn btn-ghost" data-en="Our ingredients" data-ar="مكوّناتنا"></a>
+      </div>
+      <div class="trust">
+        <span><svg class="tick" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span data-en="Free GCC delivery" data-ar="توصيل مجاني للخليج"></span></span>
+        <span><svg class="tick" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span data-en="Dermatologist tested" data-ar="مُختبر طبيًا"></span></span>
+        <span><svg class="tick" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span data-en="Halal certified" data-ar="حلال معتمد"></span></span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="bottle-stage"><svg viewBox="0 0 200 320" fill="none" aria-hidden="true">
+        <rect x="74" y="8" width="52" height="26" rx="5" fill="#8f6f40"/>
+        <rect x="80" y="30" width="40" height="10" fill="#b6905a"/>
+        <rect x="56" y="40" width="88" height="240" rx="22" fill="url(#g1)" stroke="#e9dcc6" stroke-width="1"/>
+        <rect x="70" y="120" width="60" height="96" rx="6" fill="#f8f3ea" opacity=".92"/>
+        <text x="100" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#3b352e" id="bottleWord">Sidr</text>
+        <text x="100" y="167" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="6.5" letter-spacing="1.6" fill="#8a7c66">FACE OIL</text>
+        <line x1="80" y1="182" x2="120" y2="182" stroke="#c8a97a" stroke-width=".8"/>
+        <text x="100" y="198" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="6" letter-spacing="1.2" fill="#8a7c66">30 ML</text>
+        <defs>
+          <linearGradient id="g1" x1="56" y1="40" x2="144" y2="280" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#f1d9a8"/><stop offset=".5" stop-color="#d9b26f"/><stop offset="1" stop-color="#b98e4e"/>
+          </linearGradient>
+        </defs>
+      </svg></div>
+      <div class="caption">
+        <span data-en="Harvested in Oman" data-ar="محصول عُمان"></span>
+        <span data-en="No. 01 — Face Oil" data-ar="رقم ٠١ — زيت الوجه"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap strip-inner">
+    <span data-en="Sidr · Frankincense · Camel Milk · Moringa · Date Seed" data-ar="سِدر · لبان · حليب إبل · مورينجا · نوى التمر"></span>
+    <span data-en="Made in the Gulf" data-ar="صُنع في الخليج"></span>
+    <span data-en="Halal certified" data-ar="حلال معتمد"></span>
+    <span data-en="Cruelty free" data-ar="خالٍ من القسوة"></span>
+  </div>
+</div>
+
+<section id="shop">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 data-en="The daily ritual" data-ar="الطقس اليومي"></h2>
+        <p data-en="Three steps, five minutes, morning and night. Nothing else needed."
+           data-ar="ثلاث خطوات، خمس دقائق، صباحًا ومساءً. لا حاجة لغيرها."></p>
+      </div>
+      <a href="#" class="link-more" data-en="View all products" data-ar="عرض كل المنتجات"></a>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <div class="card-visual v1">
+          <span class="tag" data-en="Bestseller" data-ar="الأكثر مبيعًا"></span>
+          <svg viewBox="0 0 200 260" fill="none" aria-hidden="true">
+            <rect x="80" y="6" width="40" height="20" rx="4" fill="#8f6f40"/>
+            <rect x="60" y="26" width="80" height="220" rx="18" fill="url(#p1)" stroke="#efe3cd"/>
+            <rect x="72" y="100" width="56" height="86" rx="5" fill="#faf5ec"/>
+            <text x="100" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#3b352e">Sidr</text>
+            <text x="100" y="146" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="5.5" letter-spacing="1.3" fill="#8a7c66">FACE OIL</text>
+            <defs><linearGradient id="p1" x1="60" y1="26" x2="140" y2="246" gradientUnits="userSpaceOnUse"><stop stop-color="#f3ddb0"/><stop offset="1" stop-color="#bd9352"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="size" data-en="30 ml" data-ar="٣٠ مل"></span>
+          <h3 data-en="Sidr Face Oil" data-ar="زيت السِدر للوجه"></h3>
+          <div class="card-foot">
+            <span class="price" data-en="AED 180" data-ar="١٨٠ د.إ"></span>
+            <button class="add" data-en="Add" data-ar="أضف"></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual v2">
+          <span class="tag" data-en="Night" data-ar="ليلي"></span>
+          <svg viewBox="0 0 200 260" fill="none" aria-hidden="true">
+            <rect x="66" y="30" width="68" height="26" rx="8" fill="#5d6a52"/>
+            <rect x="58" y="54" width="84" height="192" rx="26" fill="url(#p2)" stroke="#eef0e4"/>
+            <rect x="74" y="112" width="52" height="74" rx="5" fill="#fbf8f0"/>
+            <text x="100" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#3b352e">Balm</text>
+            <text x="100" y="155" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="5" letter-spacing="1.2" fill="#8a7c66">FRANKINCENSE</text>
+            <defs><linearGradient id="p2" x1="58" y1="54" x2="142" y2="246" gradientUnits="userSpaceOnUse"><stop stop-color="#e9ecdc"/><stop offset="1" stop-color="#aeb896"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="size" data-en="50 ml" data-ar="٥٠ مل"></span>
+          <h3 data-en="Frankincense Night Balm" data-ar="بلسم اللبان الليلي"></h3>
+          <div class="card-foot">
+            <span class="price" data-en="AED 145" data-ar="١٤٥ د.إ"></span>
+            <button class="add" data-en="Add" data-ar="أضف"></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual v3">
+          <span class="tag" data-en="New" data-ar="جديد"></span>
+          <svg viewBox="0 0 200 260" fill="none" aria-hidden="true">
+            <rect x="84" y="18" width="32" height="34" rx="4" fill="#c99b86"/>
+            <rect x="70" y="50" width="60" height="196" rx="14" fill="url(#p3)" stroke="#f2e2d8"/>
+            <rect x="80" y="118" width="40" height="72" rx="4" fill="#fdf8f2"/>
+            <text x="100" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#3b352e">Cleanse</text>
+            <text x="100" y="160" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="4.8" letter-spacing="1.1" fill="#8a7c66">CAMEL MILK</text>
+            <defs><linearGradient id="p3" x1="70" y1="50" x2="130" y2="246" gradientUnits="userSpaceOnUse"><stop stop-color="#f6e3da"/><stop offset="1" stop-color="#d3a894"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="size" data-en="150 ml" data-ar="١٥٠ مل"></span>
+          <h3 data-en="Camel Milk Cleanser" data-ar="غسول حليب الإبل"></h3>
+          <div class="card-foot">
+            <span class="price" data-en="AED 120" data-ar="١٢٠ د.إ"></span>
+            <button class="add" data-en="Add" data-ar="أضف"></button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 data-en="Why Sidr is different" data-ar="لماذا سِدر مختلفة"></h2>
+        <p data-en="Most 'Arabian' beauty brands import their formulas. We start in the wadi."
+           data-ar="معظم العلامات التي تُسمّى «عربية» تستورد تركيباتها. نحن نبدأ من الوادي."></p>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="num">01</div>
+        <h3 data-en="Sourced, not imported" data-ar="من المصدر، لا من المستورد"></h3>
+        <p data-en="Harvested with partner cooperatives in Oman and the Hijaz. Every batch is traceable to a single season."
+           data-ar="يُحصد بالشراكة مع تعاونيات في عُمان والحجاز. كل دفعة يمكن تتبّعها إلى موسم واحد."></p>
+      </div>
+      <div class="why-item">
+        <div class="num">02</div>
+        <h3 data-en="Formulated for heat" data-ar="مصمّم لأجواء الحر"></h3>
+        <p data-en="Light, non-comedogenic textures that hold up in 45°C and under an abaya or a shirt collar."
+           data-ar="قوام خفيف لا يسدّ المسام، يتحمّل حرارة ٤٥ درجة وتحت العباءة أو ياقة القميص."></p>
+      </div>
+      <div class="why-item">
+        <div class="num">03</div>
+        <h3 data-en="Halal, always" data-ar="حلال، دائمًا"></h3>
+        <p data-en="No alcohol, no animal testing, certified by an accredited Gulf body. The certificate ships with every order."
+           data-ar="خالٍ من الكحول، بلا تجارب على الحيوان، معتمد من جهة خليجية معتمدة. الشهادة تُرفق مع كل طلب."></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-sec">
+  <div class="wrap quote-wrap">
+    <div class="quote-mark">”</div>
+    <blockquote data-en="Finally a local brand that doesn't feel like a copy of a French one."
+                data-ar="أخيرًا علامة محلية لا تبدو نسخةً من علامة فرنسية."></blockquote>
+    <div class="who">
+      <div class="avatar">L</div>
+      <span data-en="Layla A. — Dubai, customer since 2024" data-ar="ليلى ع. — دبي، عميلة منذ ٢٠٢٤"></span>
+    </div>
+  </div>
+</section>
+
+<section id="journal">
+  <div class="wrap">
+    <div class="band">
+      <div>
+        <h2 data-en="Get 10% off your first ritual." data-ar="خصم ١٠٪ على طقسك الأول."></h2>
+        <p data-en="One email a month: harvest notes, a new formula, nothing else. Unsubscribe in one click."
+           data-ar="رسالة واحدة شهريًا: أخبار الحصاد، وتركيبة جديدة، لا شيء غير ذلك. إلغاء الاشتراك بنقرة."></p>
+      </div>
+      <div>
+        <form class="band-form" onsubmit="event.preventDefault();this.reset();alert(document.body.classList.contains('ar')?'تم التسجيل — تحقق من بريدك.':'You are in — check your inbox.');">
+          <input type="email" required data-en-ph="Your email" data-ar-ph="بريدك الإلكتروني" placeholder="Your email" />
+          <button class="btn btn-gold" data-en="Join" data-ar="انضم"></button>
+        </form>
+        <small data-en="No spam. No sharing. Halal earnings, honestly made."
+               data-ar="لا رسائل مزعجة. لا مشاركة للبيانات. عمل حلال، بصناعة صادقة."></small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:12px">
+          <span class="logo-word" data-en="Sidr" data-ar="سِدر"></span>
+        </a>
+        <p style="margin:0;max-width:32ch;font-size:13px"
+           data-en="Skincare from the Arabian Peninsula, made for the modern ritual."
+           data-ar="عناية بالبشرة من قلب الجزيرة العربية، لطقس يومي عصري."></p>
+      </div>
+      <div>
+        <h4 data-en="Shop" data-ar="المتجر"></h4>
+        <a href="#" data-en="Face" data-ar="الوجه"></a>
+        <a href="#" data-en="Body" data-ar="الجسم"></a>
+        <a href="#" data-en="Gift sets" data-ar="أطقم الهدايا"></a>
+      </div>
+      <div>
+        <h4 data-en="Help" data-ar="المساعدة"></h4>
+        <a href="#" data-en="Shipping" data-ar="الشحن"></a>
+        <a href="#" data-en="Returns" data-ar="الإرجاع"></a>
+        <a href="#" data-en="Contact" data-ar="اتصل بنا"></a>
+      </div>
+      <div>
+        <h4 data-en="Follow" data-ar="تابعنا"></h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-en="© 2026 Sidr — concept demo" data-ar="© ٢٠٢٦ سِدر — نموذج تجريبي"></span>
+      <span data-en="Dubai · Riyadh · Muscat" data-ar="دبي · الرياض · مسقط"></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang){
+    var ar = lang === 'ar';
+    document.documentElement.lang = ar ? 'ar' : 'en';
+    document.documentElement.dir  = ar ? 'rtl' : 'ltr';
+    document.body.classList.toggle('ar', ar);
+
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var v = el.getAttribute(ar ? 'data-ar' : 'data-en');
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-en-ph]').forEach(function(el){
+      el.placeholder = ar ? el.getAttribute('data-ar-ph') : el.getAttribute('data-en-ph');
+    });
+
+    document.getElementById('btnEn').classList.toggle('on', !ar);
+    document.getElementById('btnAr').classList.toggle('on', ar);
+    document.getElementById('bottleWord').textContent = ar ? 'سِدر' : 'Sidr';
+    try { localStorage.setItem('sidr-lang', lang); } catch(e){}
+  }
+  try {
+    if (localStorage.getItem('sidr-lang') === 'ar') setLang('ar');
+  } catch(e){}
+</script>
+</body>
+</html>
